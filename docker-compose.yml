@@ -3,8 +3,6 @@ name: anycrawl
 x-common-service: &common-service
     networks:
         - anycrawl-network
-    volumes:
-        - anycrawl-vol:/usr/src/app
 
 x-common-env: &common-env
     NODE_ENV: ${NODE_ENV:-production}
@@ -72,7 +70,6 @@ services:
 
 volumes:
     redis-data:
-    anycrawl-vol:
 
 networks:
     anycrawl-network:
