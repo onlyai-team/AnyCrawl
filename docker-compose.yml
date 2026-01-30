@@ -4,7 +4,7 @@ x-common-service: &common-service
     networks:
         - anycrawl-network
     volumes:
-        - ./storage:/usr/src/app/storage
+        - anycrawl-vol:/usr/src/app
 
 x-common-env: &common-env
     NODE_ENV: ${NODE_ENV:-production}
@@ -28,9 +28,6 @@ services:
             <<: *common-env
         ports:
             - "8080:8080"
-        volumes:
-            - ./storage:/usr/src/app/storage
-            - ./db:/usr/src/app/db
         depends_on:
             - redis
 
@@ -75,6 +72,7 @@ services:
 
 volumes:
     redis-data:
+    anycrawl-vol:
 
 networks:
     anycrawl-network:
